@@ -89,7 +89,7 @@ To compare stamps use _leq_ method of a stamp. This method returns **true** if g
 the one in the argument, **false** otherwise.
 
 ```javascript
-  const Stamp = require('itc-js').Stamp
+  const Stamp = require('itc-js').ImmutableStamp
 
   let a = new Stamp()
 
