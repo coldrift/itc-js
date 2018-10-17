@@ -8,6 +8,8 @@ Causality tracking mechanisms is modeled by a set of core operations: **fork**, 
 
 Causality is characterized by a partial order over the event components of stamps.
 
+There are 3 basic operations over a stamp:
+
 **fork** The fork operation allows the cloning of the causal past of a stamp, resulting in a pair of stamps that
 
 **event** An event operation adds a new event to the event component, so that if _s1_ results from
@@ -25,14 +27,17 @@ $ npm install --save itc-js
 
 ## API
 
+### fork, event and join
+
 ```javascript
   const Stamp = require('itc-js').Stamp
 
   let a = new Stamp()
 
+  // a.toString() === '(1: 0)'
+
   let [a1, b] = a.fork()
 
-  // a.toString() === '(1: 0)'
   // a1.toString() === '((1,0): 0)'
   // b.toString() === '((0,1): 0)'
 
@@ -77,6 +82,11 @@ $ npm install --save itc-js
   // b4.toString() === '(((0,1),0): (1,0,1))'
   // c1.toString() === '((0,1): (1,0,1))'
 ```
+
+### Comparing stamps
+
+To compare stamps use _leq_ method of a stamp. This method returns **true** if given stamp is strictly before
+the one in the argument.
 
 ## License
 
