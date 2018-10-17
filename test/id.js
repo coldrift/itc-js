@@ -12,6 +12,12 @@ t.test('test clone 0', async t => {
   t.is(i.toString(), '0')
 });
 
+t.test('test clone 1', async t => {
+  let id = new OneId()
+  let i = id.clone()
+  t.is(i.toString(), '1')
+});
+
 t.test('test clone (0,1)', async t => {
   let id = new Id(new ZeroId(), new OneId())
   let i = id.clone()
@@ -91,4 +97,14 @@ t.test('test norm (1,1)', async t => {
 
   t.is(id.toString(), '(1,1)')
   t.is(i.toString(), '1')
+});
+
+t.test('test sum ((1,0),0) and ((0,1),0)', async t => {
+
+  let id1 = new Id(new Id(new OneId(), new ZeroId()), new ZeroId())
+  let id2 = new Id(new Id(new ZeroId(), new OneId()), new ZeroId())
+
+  let i = Id.sum(id1, id2)
+
+  t.is(i.toString(), '(1,0)')
 });
