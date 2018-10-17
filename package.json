@@ -2,6 +2,10 @@
   "name": "itc-js",
   "version": "0.8.0",
   "description": "JS implementation of Interval Tree Clock",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/coldrift/itc-js.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test node ./node_modules/.bin/tap test/*.js --cov"

@@ -26,6 +26,8 @@ $ npm install --save itc-js
 ## API
 
 ```javascript
+  const Stamp = require('itc-js').Stamp
+
   let a = new Stamp()
 
   let [a1, b] = a.fork()
