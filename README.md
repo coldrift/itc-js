@@ -4,7 +4,7 @@ This is a JavaScript implementation of Interval Tree Clock as described in [itc2
 
 Interval Tree Clocks (ITC) is a novel causality tracking mechanism that generalizes both Version Vectors and Vector Clocks.
 
-Causality tracking mechanisms is modeled by a set of core operations: **fork**, **event** and **join**, that act on stamps (logical clocks).
+Causality tracking is modeled by a set of core operations: **fork**, **event** and **join**, that act on stamps (logical clocks).
 
 Causality is characterized by a partial order over the event components of stamps.
 
@@ -27,7 +27,23 @@ $ npm install --save itc-js
 
 ## API
 
-### fork, event and join
+### Creating a new stamp
+
+A new stamp is only created upon instantiating of a new history of events,
+e.g. upon creating a new replica set. 
+
+```javascript
+  const Stamp = require('itc-js').Stamp
+
+  let a = new Stamp()
+
+  // a.toString() === '(1: 0)'
+```
+
+### Forking
+
+A stamp can be forked by calling a _fork()_ method on a stamp. The stamp's casual history then
+splits into 2 parts, a stamp with one of them is returned as the result of then _fork()_:
 
 ```javascript
   const Stamp = require('itc-js').Stamp
@@ -36,7 +52,52 @@ $ npm install --save itc-js
 
   // a.toString() === '(1: 0)'
 
-  let a = a.fork()
+  let b = a.fork()
+
+  // a.toString() === '((1,0): 0)'
+  // b.toString() === '((0,1): 0)'
+```
+
+### Stamping
+
+Use _event()_ method to record an event in the stamp's history.
+
+```javascript
+  const Stamp = require('itc-js').Stamp
+
+  let a = new Stamp()
+  let b = a.fork()
+  b.event()
+
+  // b.toString() === '((0,1): (0,0,1))'
+```
+
+### Joining
+
+Use _join()_ method to join stamps:
+
+```javascript
+  const Stamp = require('itc-js').Stamp
+
+  let a = new Stamp()
+  let b = a.fork()
+  b.event()
+  b.event()
+  a.join(b)
+
+  // a.toString() === '((0,1): (0,0,2))'
+```
+
+### Example
+
+```javascript
+  const Stamp = require('itc-js').Stamp
+
+  let a = new Stamp()
+
+  // a.toString() === '(1: 0)'
+
+  let b = a.fork()
 
   // a.toString() === '((1,0): 0)'
   // b.toString() === '((0,1): 0)'
