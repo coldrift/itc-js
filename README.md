@@ -86,7 +86,26 @@ $ npm install --save itc-js
 ### Comparing stamps
 
 To compare stamps use _leq_ method of a stamp. This method returns **true** if given stamp is strictly before
-the one in the argument.
+the one in the argument, **false** otherwise.
+
+```javascript
+  const Stamp = require('itc-js').Stamp
+
+  let a = new Stamp()
+
+  // a.toString() === '(1: 0)'
+
+  let [a1, b1] = a.fork()
+
+  // a1.toString() === '((1,0): 0)'
+  // b1.toString() === '((0,1): 0)'
+
+  let b2 = b1.event()
+
+  // b2.toString() === '((0,1): (0,0,1))'
+
+  b1.leq(b2) // true
+```
 
 ## License
 
