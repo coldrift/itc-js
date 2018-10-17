@@ -107,6 +107,66 @@ the one in the argument, **false** otherwise.
   b1.leq(b2) // true
 ```
 
+### Immutable stamps
+
+You can also use immutable stamps if you want to enforce strict immutability.
+
+The API of immutable stamps is slighly different:
+
+```javascript
+  const Stamp = require('itc-js').ImmutableStamp
+
+  let a = new Stamp()
+
+  // a.toString() === '(1: 0)'
+
+  let [a1, b] = a.fork()
+
+  // a1.toString() === '((1,0): 0)'
+  // b.toString() === '((0,1): 0)'
+
+  let a2 = a1.event()
+
+  // a2.toString() === '((1,0): (0,1,0))'
+
+  let b1 = b.event()
+
+  // b1.toString() === '((0,1): (0,0,1))'
+    
+  let [a3, c] = a2.fork()
+
+  // c.toString() === '(((0,1),0): (0,1,0))'
+    
+  let b2 = b1.event()
+
+  // b2.toString() === '((0,1): (0,0,2))'
+    
+  let a4 = a3.event()
+    
+  // a4.toString() === '(((1,0),0): (0,(1,1,0),0))'
+
+  let b3 = b2.join(c)
+    
+  // b3.toString() === '(((0,1),1): (1,0,1))'
+  // c.toString() === '(((0,1),0): (0,1,0))'
+    
+  let [b4, c1] = b3.fork()
+    
+  // c1.toString() === '((0,1): (1,0,1))'
+  // b4.toString() === '(((0,1),0): (1,0,1))'
+
+  let a5 = a4.join(b4)
+  
+  // a5.toString() === '((1,0): (1,(0,1,0),1))'
+  // b4.toString() === '(((0,1),0): (1,0,1))'
+    
+  let a6 = a5.event()
+
+  // a6.toString() === '((1,0): 2)'
+  // b4.toString() === '(((0,1),0): (1,0,1))'
+  // c1.toString() === '((0,1): (1,0,1))'
+```
+
 ## License
 
 Licensed under MIT License. Copyright 2018 Coldrift Technologies B.V. All rights reserved.
