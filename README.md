@@ -36,51 +36,51 @@ $ npm install --save itc-js
 
   // a.toString() === '(1: 0)'
 
-  let [a1, b] = a.fork()
+  let a = a.fork()
 
-  // a1.toString() === '((1,0): 0)'
+  // a.toString() === '((1,0): 0)'
   // b.toString() === '((0,1): 0)'
 
-  let a2 = a1.event()
+  a.event()
 
-  // a2.toString() === '((1,0): (0,1,0))'
+  // a.toString() === '((1,0): (0,1,0))'
 
-  let b1 = b.event()
+  b.event()
 
-  // b1.toString() === '((0,1): (0,0,1))'
+  // b.toString() === '((0,1): (0,0,1))'
     
-  let [a3, c] = a2.fork()
+  let c = a.fork()
 
   // c.toString() === '(((0,1),0): (0,1,0))'
     
-  let b2 = b1.event()
+  b.event()
 
-  // b2.toString() === '((0,1): (0,0,2))'
+  // b.toString() === '((0,1): (0,0,2))'
     
-  let a4 = a3.event()
+  a.event()
     
-  // a4.toString() === '(((1,0),0): (0,(1,1,0),0))'
+  // a.toString() === '(((1,0),0): (0,(1,1,0),0))'
 
-  let b3 = b2.join(c)
+  b.join(c)
     
-  // b3.toString() === '(((0,1),1): (1,0,1))'
+  // b.toString() === '(((0,1),1): (1,0,1))'
   // c.toString() === '(((0,1),0): (0,1,0))'
     
-  let [b4, c1] = b3.fork()
+  let c = b.fork()
     
-  // c1.toString() === '((0,1): (1,0,1))'
-  // b4.toString() === '(((0,1),0): (1,0,1))'
+  // c.toString() === '((0,1): (1,0,1))'
+  // b.toString() === '(((0,1),0): (1,0,1))'
 
-  let a5 = a4.join(b4)
+  a.join(b)
   
-  // a5.toString() === '((1,0): (1,(0,1,0),1))'
-  // b4.toString() === '(((0,1),0): (1,0,1))'
+  // a.toString() === '((1,0): (1,(0,1,0),1))'
+  // b.toString() === '(((0,1),0): (1,0,1))'
     
-  let a6 = a5.event()
+  a.event()
 
-  // a6.toString() === '((1,0): 2)'
-  // b4.toString() === '(((0,1),0): (1,0,1))'
-  // c1.toString() === '((0,1): (1,0,1))'
+  // a.toString() === '((1,0): 2)'
+  // b.toString() === '(((0,1),0): (1,0,1))'
+  // c.toString() === '((0,1): (1,0,1))'
 ```
 
 ### Comparing stamps
