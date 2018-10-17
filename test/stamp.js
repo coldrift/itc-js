@@ -62,4 +62,9 @@ t.test('test all', async t => {
   t.is(a6.toString(), '((1,0): 2)')
   t.is(b4.toString(), '(((0,1),0): (1,0,1))')
   t.is(c1.toString(), '((0,1): (1,0,1))')
+
+  t.ok(a2.leq(a4))
+  t.ok(a4.leq(a6))
+  t.ok(b1.leq(b2))
+  t.ok(b2.leq(c1))
 });

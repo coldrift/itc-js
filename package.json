@@ -1,6 +1,6 @@
 {
   "name": "itc-js",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "description": "JS implementation of Interval Tree Clock",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,6 @@
   "keywords": [
     "distributed",
     "systems",
-    "distributed",
     "synchronization"
   ],
   "author": "Valery Kholodkov",
