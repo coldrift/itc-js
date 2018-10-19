@@ -232,3 +232,7 @@ The API of immutable stamps is slighly different:
 
 Licensed under MIT License. Copyright 2018 Coldrift Technologies B.V. All rights reserved.
 
+## References
+
+[Interval Tree Clocks: A Logical Clock for Dynamic Systems](http://gsd.di.uminho.pt/members/cbm/ps/itc2008.pdf)
+[A short introduction to Interval Tree Clocks](https://blog.separateconcerns.com/2017-05-07-itc.html)
