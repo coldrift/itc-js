@@ -43,7 +43,7 @@ e.g. upon creating a new replica set.
 ### Forking
 
 A stamp can be forked by calling a _fork()_ method on a stamp. The stamp's casual history then
-splits into 2 parts, a stamp with one of them is returned as the result of then _fork()_:
+splits into 2 parts, a stamp with one of them is returned as the result of the _fork()_:
 
 ```javascript
   const Stamp = require('itc-js').Stamp
@@ -231,6 +231,9 @@ The API of immutable stamps is slighly different:
 ## License
 
 Licensed under MIT License. Copyright 2018 Coldrift Technologies B.V. All rights reserved.
+
+## Maintenance and support
+[Visit the company's websiet](https://coldrift.com/)
 
 ## References
 
