@@ -1,6 +1,6 @@
 {
   "name": "itc-js",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "JS implementation of Interval Tree Clock",
   "repository": {
     "type" : "git",

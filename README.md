@@ -233,7 +233,7 @@ The API of immutable stamps is slighly different:
 Licensed under MIT License. Copyright 2018 Coldrift Technologies B.V. All rights reserved.
 
 ## Maintenance and support
-[Visit the company's websiet](https://coldrift.com/)
+[Visit the company's website](https://coldrift.com/)
 
 ## References
 
