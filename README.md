@@ -10,7 +10,8 @@ Causality is characterized by a partial order over the event components of stamp
 
 There are 3 basic operations over a stamp:
 
-**fork** The fork operation allows the cloning of the causal past of a stamp, resulting in a pair of stamps that
+**fork** The fork operation allows cloning of the causal past of a stamp, resulting in a pair of stamps that
+share causal past.
 
 **event** An event operation adds a new event to the event component, so that if _s1_ results from
 _event(a)_ the causal ordering is such that s < s1. This action does a strict advance in the partial order such
