@@ -79,6 +79,17 @@ t.test('test split (1,1)', async t => {
   t.is(i[1].toString(), '(0,1)')
 });
 
+t.test('test split ((1,0),(0,1))', async t => {
+
+  let id = new Id(new Id(new OneId(), new ZeroId()), new Id(new ZeroId(), new OneId()))
+
+  let i = id.split()
+
+  t.is(id.toString(), '((1,0),(0,1))')
+  t.is(i[0].toString(), '((1,0),0)')
+  t.is(i[1].toString(), '(0,(0,1))')
+});
+
 t.test('test norm (0,0)', async t => {
 
   let id = new Id(new ZeroId(), new ZeroId())
@@ -103,6 +114,16 @@ t.test('test sum ((1,0),0) and ((0,1),0)', async t => {
 
   let id1 = new Id(new Id(new OneId(), new ZeroId()), new ZeroId())
   let id2 = new Id(new Id(new ZeroId(), new OneId()), new ZeroId())
+
+  let i = Id.sum(id1, id2)
+
+  t.is(i.toString(), '(1,0)')
+});
+
+t.test('test sum ((1,0),0) and (1,0)', async t => {
+
+  let id1 = new Id(new Id(new OneId(), new ZeroId()), new ZeroId())
+  let id2 = new Id(new OneId(), new ZeroId())
 
   let i = Id.sum(id1, id2)
 

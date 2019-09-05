@@ -1,10 +1,10 @@
 {
   "name": "itc-js",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "JS implementation of Interval Tree Clock",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/coldrift/itc-js.git"
+    "type": "git",
+    "url": "https://github.com/coldrift/itc-js.git"
   },
   "main": "index.js",
   "scripts": {
